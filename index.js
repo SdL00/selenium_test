@@ -5,7 +5,8 @@ const webdriver = require('selenium-webdriver'); // By = webdriver.By, until = w
 var chrome = require('selenium-webdriver/chrome');
 const fs = require('fs');
 const Blob = require('buffer');
-const Readable = require ('stream');
+// const Readable = require ('stream');
+
 
 const sleep = module.exports.sleep = (delay) => {
   return new Promise((resolve) => {
@@ -32,7 +33,7 @@ const sleep = module.exports.sleep = (delay) => {
   driver = driver.build();
     
   try {
-    await driver.get('https://10.73.0.104:3000/?info=true&roomId=4runmc5l&produce=false');
+    await driver.get('https://10.31.4.231:3000/?info=true&roomId=gphazqup&produce=false'); // roomId to update
     console.log("Headless Chrome Initialized")
     
     await driver.takeScreenshot().then(
@@ -41,9 +42,13 @@ const sleep = module.exports.sleep = (delay) => {
       }
     );
     
-    // const video = await driver.wait(webdriver.until.elementsLocated(webdriver.By.css('video')), 9000);
+    
+    const video = await driver.wait(webdriver.until.elementLocated(webdriver.By.css('video')), 9000);
+    // const video = document.querySelector("video");
 
-    // const mediaRecorder = new window.MediaRecorder(video);
+    // const stream = video.captureStream();
+    // const options = { mimeType: "video/webm; codecs=vp9" };
+    // const mediaRecorder = new MediaRecorder(video, options);
 
     // mediaRecorder.ondataavailable = handleDataAvailable;
     // mediaRecorder.start();
